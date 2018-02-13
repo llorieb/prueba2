@@ -1,8 +1,20 @@
-<html>
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+	<SCRIPT type="text/javascript">
+		fuction onClick() {
+			var valorIngresado = document.getElementById('campoNombre').value;						
+			alert(valorIngresado);
+		}
+	</SCRIPT>
+	<META http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<TITLE>Prueba de app hibrida 2</TITLE>
+</HEAD>
+<BODY>
 	<center>
 	Ingrese su nombre<br>
-	<input/><br>
-	<button>Enviar</button>
+	<input id="campoNombre"/><br>
+	<button onClick="onClick()">Ingresar</button>
 	</center>
-	
+</BODY>	
 </html>
