@@ -25,7 +25,7 @@
   <preference name="prerendered-icon" value="true" />
   <preference name="detect-data-types" value="true" />
   <preference name="exit-on-suspend" value="true" />
-  <preference name="deployment-target" value="7.0" />
+  <preference name="deployment-target" value="7.1.2" />
 
   <!-- Android only -->
   <preference name="android-build-tool" value="ant|gradle" />
