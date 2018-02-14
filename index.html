@@ -1,10 +1,35 @@
 <!DOCTYPE HTML>
 <HTML>
 <HEAD>
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  // TODO: Replace with your project's customized code snippet
+	  var config = {
+		apiKey: "AIzaSyAtf94jvyCkxieNQRVI7Ep2fqv0Z0Bmk5c",
+		databaseURL: "https://chemstock-01.firebaseio.com",
+	  };
+	  firebase.initializeApp(config);
+	</script>
 	<SCRIPT type="text/javascript">
 		function onClick() {
-			var valorIngresado = document.getElementById('campoNombre').value;						
-			alert(valorIngresado);
+			<!--var valorIngresado = document.getElementById('campoNombre').value;-->				
+			<!--alert(firebase.database().ref('/chemstock-01/'));-->
+			grabar();
+		}
+		
+		function grabar() {
+				var marca = document.getElementById('campoMarca').value;
+				var modelo = document.getElementById('campoModelo').value;
+				var iso = document.getElementById('campoISO').value
+				
+				alert (marca + ' ' + modelo + ' ' + iso);
+					
+				firebase.database().ref('/').push({
+				marca: marca,
+				modelo: modelo,
+				iso : iso
+			  });
 		}
 	</SCRIPT>
 	<META http-equiv="Content-type" content="text/html;charset=UTF-8">
@@ -13,8 +38,9 @@
 </HEAD>
 <BODY>
 	<center>
-	<p>Ingrese su nombre</p>
-	<p><input id="campoNombre"/></p>
+	<p><input id="campoMarca" placeholder="Marca"/></p>
+	<p><input id="campoModelo" placeholder="Modelo"/></p>
+	<p><input id="campoISO" placeholder="ISO"/></p>
 	<p><button onClick='onClick()'>Ingresar</button></p>
 	</center>
 </BODY>	
