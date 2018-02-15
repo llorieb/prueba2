@@ -12,7 +12,8 @@
   <author email="llorieb@gmail.com">
       Llorieb
   </author>
-
+  
+  <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
   <feature name="http://api.phonegap.com/1.0/network" />
   <access origin="*" onlyInBrowser="true" />
   <!-- Allow links to web pages to open in a browser -->
