@@ -15,6 +15,8 @@
 	  firebase.initializeApp(config);
 	</script>
 	<SCRIPT type="text/javascript">
+		var key = null;
+		
 		function onClickGuardar() {
 			<!--var valorIngresado = document.getElementById('campoNombre').value;-->				
 			<!--alert(firebase.database().ref('/chemstock-01/'));-->
@@ -22,8 +24,13 @@
 		}
 		
 		function onClickLast() {
-			var objeto = firebase.database().ref.child(key);
-			alert(objeto);
+			if(key == null)	 {
+				alert('Debe guardar algùn valor');
+			}
+			else {
+				var objeto = firebase.database().ref(key);
+				alert(objeto);
+			}
 		}
 		
 		function grabar() {
@@ -31,13 +38,13 @@
 				var modelo = document.getElementById('campoModelo').value;
 				var iso = document.getElementById('campoISO').value
 				
-				alert (marca + ' ' + modelo + ' ' + iso);
-					
-				var key = firebase.database().ref('/').push({
+				var newPostRef = firebase.database().ref('/').push({
 				marca: marca,
 				modelo: modelo,
 				iso : iso
-			  	}).geyKey();
+			  	});
+			  	
+			  	key = newPostRef.key;
 			
 				if (key != null) {
 					alert('Se guardaron los datos con la clave ' + key);
