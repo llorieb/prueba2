@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <HTML>
 <HEAD>
+	<META http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<META name="viewport" content="width=device-width, initial-scale=1.0">
+	<TITLE>Prueba de app hibrida 2</TITLE>
 	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 	<script>
 	  // Initialize Firebase
@@ -12,10 +15,15 @@
 	  firebase.initializeApp(config);
 	</script>
 	<SCRIPT type="text/javascript">
-		function onClick() {
+		function onClickGuardar() {
 			<!--var valorIngresado = document.getElementById('campoNombre').value;-->				
 			<!--alert(firebase.database().ref('/chemstock-01/'));-->
 			grabar();
+		}
+		
+		function onClickLast() {
+			var objeto = firebase.database().ref.child(key);
+			alert(objeto);
 		}
 		
 		function grabar() {
@@ -25,23 +33,27 @@
 				
 				alert (marca + ' ' + modelo + ' ' + iso);
 					
-				firebase.database().ref('/').push({
+				var key = firebase.database().ref('/').push({
 				marca: marca,
 				modelo: modelo,
 				iso : iso
-			  });
+			  	}).geyKey();
+			
+				if (key != null) {
+					alert('Se guardaron los datos con la clave ' + key);
+				}
+				else {
+					alert('Se produjo algùn error');
+				}
 		}
 	</SCRIPT>
-	<META http-equiv="Content-type" content="text/html;charset=UTF-8">
-	<META name="viewport" content="width=device-width, initial-scale=1.0">
-	<TITLE>Prueba de app hibrida 2</TITLE>
 </HEAD>
 <BODY>
 	<center>
 	<p><input id="campoMarca" placeholder="Marca"/></p>
 	<p><input id="campoModelo" placeholder="Modelo"/></p>
 	<p><input id="campoISO" placeholder="ISO"/></p>
-	<p><button onClick='onClick()'>Ingresar</button></p>
+	<p><center><button onClick='onClickGuardar()'>Guardar</button>&nbsp;<button onClick='onClickLast()'>Obtener último</button><center></p>
 	</center>
 </BODY>	
 </html>
