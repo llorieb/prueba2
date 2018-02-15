@@ -25,11 +25,13 @@
 		
 		function onClickLast() {
 			if(key == null)	 {
-				alert('Debe guardar algùn valor');
+				alert('Debe guardar algún valor');
 			}
 			else {
-				var objeto = firebase.database().ref(key);
-				alert(objeto);
+				var urlRef = firebase.database().ref().child('/' + key);
+				urlRef.once("value", function(snapshot) {
+					alert('Se guardó marca: ' + snapshot.val().marca + ', modelo: ' + snapshot.val().modelo + ', ISO: ' + snapshot.val().iso)			
+				});
 			}
 		}
 		
