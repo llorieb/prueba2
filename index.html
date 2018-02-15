@@ -12,9 +12,23 @@
 		apiKey: "AIzaSyAtf94jvyCkxieNQRVI7Ep2fqv0Z0Bmk5c",
 		databaseURL: "https://chemstock-01.firebaseio.com",
 	  };
-	firebase.initializeApp(config);
-	firebase.setPersistenceEnabled(true);
-	</script>
+	  firebase.initializeApp(config);
+	  <!--firebase.setPersistenceEnabled(true);-->
+	  
+        function login() {
+            function newLoginHappened(user) {
+                if (user) {
+                    alert(user);
+                } else {
+                    var provider = new firebase.auth.GoogleAuthProvider();
+                    firebase.auth().signInWithRedirect(provider);
+                }
+            }
+            firebase.auth().onAuthStateChanged(newLoginHappened);
+        }
+
+        window.onload = login;
+    </script>
 	<SCRIPT type="text/javascript">
 		var key = null;
 		
@@ -63,7 +77,7 @@
 	<p><input id="campoMarca" placeholder="Marca"/></p>
 	<p><input id="campoModelo" placeholder="Modelo"/></p>
 	<p><input id="campoISO" placeholder="ISO"/></p>
-	<p><center><button onClick='onClickGuardar()'>Guardar</button>&nbsp;<button onClick='onClickLast()'>Obtener último</button><center></p>
+	<p><center><button onClick='onClickGuardar()'>Guardar</button>&nbsp;<button onClick='onClickLast()'>Obtener último</button></center></p>
 	</center>
 </BODY>	
 </html>
