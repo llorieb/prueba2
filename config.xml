@@ -13,6 +13,9 @@
       Llorieb
   </author>
 
+  <feature name="http://api.phonegap.com/1.0/network" />
+  <access origin="*" onlyInBrowser="true" />
+    
   <!-- all platforms -->
   <preference name="phonegap-version" value="cli-8.0.0" />
   <!--
